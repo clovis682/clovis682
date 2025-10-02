@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elite Breeders USA | Premium Animals Nationwide</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #2c5530;
+            --secondary: #4a7c59;
+            --accent: #d4a574;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --warning: #ffc107;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--dark);
+        }
+        
+        .btn-accent:hover {
+            background-color: #c49567;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            font-size: 2rem;
+            color: var(--accent);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .header-actions {
+            display: flex;
+            align-items: center;
+        }
+        
+        .cart-icon {
+            position: relative;
+            margin-right: 20px;
+            font-size: 1.3rem;
+            color: var(--dark);
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(44, 85, 48, 0.8), rgba(44, 85, 48, 0.9)), url('https://images.unsplash.com/photo-1548199973-03cce0bbc87b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        /* Featured Animals */
+        .featured-animals {
+            background-color: white;
+        }
+        
+        .animals-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .animal-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .animal-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .animal-image {
+            height: 220px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .animal-info {
+            padding: 20px;
+        }
+        
+        .animal-info h3 {
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .animal-breed {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+        
+        .animal-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .animal-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: #f8f9fa;
+        }
+        
+        .about-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .about-content h2 {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .about-content p {
+            margin-bottom: 20px;
+        }
+        
+        .features-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+        
+        .features-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .features-list li i {
+            color: var(--success);
+            margin-right: 10px;
+            margin-top: 5px;
+        }
+        
+        /* Process Section */
+        .process {
+            background-color: white;
+        }
+        
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+        
+        .step {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 0 20px;
+            margin-bottom: 30px;
+        }
+        
+        .step-icon {
+            background-color: var(--primary);
+            color: white;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.8rem;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            background-color: #f8f9fa;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .testimonial-text:before {
+            content: """;
+            font-size: 4rem;
+            color: var(--accent);
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            opacity: 0.3;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: #ddd;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-details i {
+            margin-right: 10px;
+            color: var(--primary);
+            width: 20px;
+        }
+        
+        .contact-form {
+            background-color: var(--light);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            margin-right: 10px;
+            color: white;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--accent);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid #444;
+            color: #bbb;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .header-actions {
+                margin-top: 15px;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <div class="logo-icon"><i class="fas fa-paw"></i></div>
+                <h1>Elite Breeders USA</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#animals">Available Animals</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#process">Our Process</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+                <a href="#contact" class="btn btn-primary">Inquire Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Premium Quality Animals Bred with Excellence</h2>
+            <p>Discover our exceptional breeding program with nationwide shipping. Healthy, well-socialized pets from trusted breeders.</p>
+            <a href="#animals" class="btn btn-accent">View Available Animals</a>
+        </div>
+    </section>
+
+    <!-- Featured Animals -->
+    <section class="featured-animals section-padding" id="animals">
+        <div class="container">
+            <div class="section-title">
+                <h2>Available Animals</h2>
+                <p>Browse our current selection of premium bred animals ready for their forever homes.</p>
+            </div>
+            <div class="animals-grid">
+                <div class="animal-card">
+                    <div class="animal-image" style="background-image: url('https://images.unsplash.com/photo-1517423447168-cb804aafa6e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="animal-info">
+                        <h3>Golden Retriever Puppies</h3>
+                        <div class="animal-breed">AKC Registered - Champion Bloodline</div>
+                        <div class="animal-price">$2,500</div>
+                        <p>Beautiful, healthy puppies with excellent temperaments. Vaccinations up to date.</p>
+                        <div class="animal-actions">
+                            <a href="#" class="btn btn-primary">Inquire</a>
+                            <a href="#" class="btn btn-accent">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="animal-card">
+                    <div class="animal-image" style="background-image: url('https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="animal-info">
+                        <h3>Bengal Kittens</h3>
+                        <div class="animal-breed">TICA Registered - Rosetted</div>
+                        <div class="animal-price">$1,800</div>
+                        <p>Stunning rosetted Bengals with exceptional markings and playful personalities.</p>
+                        <div class="animal-actions">
+                            <a href="#" class="btn btn-primary">Inquire</a>
+                            <a href="#" class="btn btn-accent">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="animal-card">
+                    <div class="animal-image" style="background-image: url('https://images.unsplash.com/photo-1551085254-e96b210db58a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="animal-info">
+                        <h3>French Bulldog Puppies</h3>
+                        <div class="animal-breed">AKC Registered - Blue Fawn</div>
+                        <div class="animal-price">$4,200</div>
+                        <p>Rare blue fawn Frenchies with excellent conformation and health testing.</p>
+                        <div class="animal-actions">
+                            <a href="#" class="btn btn-primary">Inquire</a>
+                            <a href="#" class="btn btn-accent">Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="animal-card">
+                    <div class="animal-image" style="background-image: url('https://images.unsplash.com/photo-1552728089-57bdde30beb3?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="animal-info">
+                        <h3>Parrotlets</h3>
+                        <div class="animal-breed">Hand-fed - Multiple Colors</div>
+                        <div class="animal-price">$350</div>
+                        <p>Hand-fed, socialized parrotlets ready for new homes. Various colors available.</p>
+                        <div class="animal-actions">
+                            <a href="#" class="btn btn-primary">Inquire</a>
+                            <a href="#" class="btn btn-accent">Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="#" class="btn btn-primary">View All Available Animals</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about section-padding" id="about">
+        <div class="container">
+            <div class="about-container">
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1425082661705-1834bfd09dca?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Our Breeding Facility">
+                </div>
+                <div class="about-content">
+                    <h2>About Elite Breeders USA</h2>
+                    <p>With over 15 years of experience, we are dedicated to breeding healthy, well-socialized animals with exceptional temperaments and conformation.</p>
+                    <p>Our breeding program focuses on genetic diversity, health testing, and proper socialization to ensure our animals become beloved family members.</p>
+                    <ul class="features-list">
+                        <li><i class="fas fa-check-circle"></i> Health tested breeding stock</li>
+                        <li><i class="fas fa-check-circle"></i> Early neurological stimulation</li>
+                        <li><i class="fas fa-check-circle"></i> Nationwide shipping available</li>
+                        <li><i class="fas fa-check-circle"></i> Lifetime breeder support</li>
+                        <li><i class="fas fa-check-circle"></i> AKC/TICA registered animals</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary" style="margin-top: 20px;">Learn More About Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process section-padding" id="process">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Adoption Process</h2>
+                <p>We make it simple and secure to adopt your new family member from anywhere in the United States.</p>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Browse & Select</h3>
+                    <p>View our available animals and select your preferred companion.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Application</h3>
+                    <p>Complete our adoption application and speak with our team.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Approval</h3>
+                    <p>We'll review your application and approve qualified homes.</p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fas fa-shipping-fast"></i>
+                    </div>
+                    <h3>Delivery</h3>
+                    <p>We arrange safe transport to your location nationwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials section-padding" id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Happy Customers Nationwide</h2>
+                <p>Hear from families across the United States who have welcomed our animals into their homes.</p>
+            </div>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "Our Golden Retriever puppy arrived healthy and happy all the way from Oregon to Florida. The communication throughout the process was exceptional."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JD</div>
+                        <div>
+                            <h4>Jennifer Davis</h4>
+                            <p>Miami, FL</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I was nervous about having a kitten shipped, but the team made it so easy. My Bengal is absolutely perfect and arrived in great condition."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div>
+                            <h4>Michael Roberts</h4>
+                            <p>Seattle, WA</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The health testing and documentation provided gave us complete peace of mind. Our Frenchie is the perfect addition to our family."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">TW</div>
+                        <div>
+                            <h4>Thomas Wilson</h4>
+                            <p>Chicago, IL</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact section-padding" id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+                <p>Have questions? Ready to welcome a new companion? Get in touch with our team.</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@elitebreedersusa.com</p>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Breeding Lane, Lancaster, PA 17601</p>
+                        <p><i class="fas fa-clock"></i> Mon-Fri: 9am-6pm EST | Sat: 10am-4pm EST</p>
+                    </div>
+                    <h3>Service Area</h3>
+                    <p>We proudly serve all 50 states with safe, reliable animal transport.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="inquiryForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="interest">Animal of Interest</label>
+                            <select id="interest" class="form-control" required>
+                                <option value="">Select an Animal</option>
+                                <option value="golden-retriever">Golden Retriever Puppies</option>
+                                <option value="bengal-kittens">Bengal Kittens</option>
+                                <option value="french-bulldog">French Bulldog Puppies</option>
+                                <option value="parrotlets">Parrotlets</option>
+                                <option value="other">Other/Not Sure</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="location">Your Location (State)</label>
+                            <input type="text" id="location" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" class="form-control" placeholder="Tell us about your interest and any questions..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Inquiry</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-column">
+                    <h3>Elite Breeders USA</h3>
+                    <p>Providing premium quality animals to loving homes across the United States since 2008.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#animals">Available Animals</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#process">Adoption Process</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Animal Types</h3>
+                    <ul>
+                        <li><a href="#">Dogs</a></li>
+                        <li><a href="#">Cats</a></li>
+                        <li><a href="#">Birds</a></li>
+                        <li><a href="#">Small Pets</a></li>
+                        <li><a href="#">Reptiles</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li><i class="fas fa-phone"></i> (555) 123-4567</li>
+                        <li><i class="fas fa-envelope"></i> info@elitebreedersusa.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Lancaster, PA 17601</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Elite Breeders USA. All rights reserved. | <a href="#" style="color: #bbb;">Privacy Policy</a> | <a href="#" style="color: #bbb;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form submission handler
+        document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your inquiry! We will contact you within 24 hours.');
+            this.reset();
+        });
+        
+        // Simple cart counter (for demonstration)
+        const cartButtons = document.querySelectorAll('.animal-actions .btn-primary');
+        const cartCount = document.querySelector('.cart-count');
+        let count = 0;
+        
+        cartButtons.forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                count++;
+                cartCount.textContent = count;
+                
+                // Show a confirmation
+                const animalName = this.closest('.animal-card').querySelector('h3').textContent;
+                alert(`You've added ${animalName} to your inquiry list!`);
+            });
+        });
+    </script>
+</body>
+</html>
